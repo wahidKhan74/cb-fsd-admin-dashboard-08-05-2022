@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundComponent implements OnInit {
 
+  public errorMessage1:string = "Oops.. Something went wrong !";
+  public errorMessage2:string = "The page you are lookig has been removed or not yet available.";
   constructor() { }
 
   ngOnInit(): void {
