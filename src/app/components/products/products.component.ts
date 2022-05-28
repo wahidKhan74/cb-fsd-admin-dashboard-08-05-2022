@@ -20,6 +20,10 @@ export class ProductsComponent implements OnInit {
 
   productForm: FormGroup = new FormGroup({});
   productModel: Products | undefined;
+
+  selectedImageIdx: number = 0;
+  thumbnailImageIdx: number = 0;
+
   tempImageFiles: any[] = [];
 
   updation: boolean = false;
@@ -35,6 +39,25 @@ export class ProductsComponent implements OnInit {
     this.initialiseModal(prd);
     this.modalService.open(modal, { size: "xl" });
   }
+
+  openImageModal(modal: any, imageUrls: string[], thumbnailImageIdx: number) {
+    this.tempImageFiles = [...imageUrls];
+    this.thumbnailImageIdx = thumbnailImageIdx;
+    this.modalService.open(modal, { 
+      size: "xl",
+      scrollable: true 
+    });
+  }
+  
+  openImage(url: string) {
+    window.open(url, "_blank")
+  }
+
+  viewProductDetails(modal: any, productObj: Products) {
+    this.productModel = productObj;
+    this.modalService.open(modal, { size: 'lg' });
+  }
+
 
   initialiseModal(productObj: Products | null) {
     if (productObj == null) {
